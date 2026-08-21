@@ -1,0 +1,59 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+
+# ── Virtual environments ───────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── AWS SAM / CloudFormation ──────────────────────────────────────────────────
+.aws-sam/
+samconfig.toml          # contains account-specific stack names / S3 buckets
+packaged.yaml
+out.json
+
+# ── Secrets & credentials ─────────────────────────────────────────────────────
+.env
+.env.*
+*.pem
+*.key
+credentials
+
+# ── Batch-run outputs (large CSVs) ────────────────────────────────────────────
+results_*.csv
+brandkit_*_matrix.csv
+brandkit_*_improvement*.csv
+
+# ── URL lists (generated artefacts) ───────────────────────────────────────────
+urls_working_*.txt
+
+# ── Reports / one-off analysis ────────────────────────────────────────────────
+REPORT.md
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Pytest / coverage ─────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/

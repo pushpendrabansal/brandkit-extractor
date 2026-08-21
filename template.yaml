@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Single-function Lambda that extracts brand kit info (logo, favicon,
+  social links, color palette, fonts, metadata) from a website URL.
+
+Globals:
+  Function:
+    Timeout: 20
+    MemorySize: 512
+    Runtime: python3.12
+
+Resources:
+  BrandKitFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: handler.handler
+      FunctionUrlConfig:
+        AuthType: NONE
+      Events:
+        ApiGet:
+          Type: HttpApi
+          Properties:
+            Path: /brandkit
+            Method: GET
+        ApiPost:
+          Type: HttpApi
+          Properties:
+            Path: /brandkit
+            Method: POST
+
+Outputs:
+  FunctionUrl:
+    Description: Direct Lambda Function URL (no API Gateway)
+    Value: !GetAtt BrandKitFunctionUrl.FunctionUrl
+  ApiEndpoint:
+    Description: HTTP API endpoint
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/brandkit"
